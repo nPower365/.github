@@ -1,17 +1,17 @@
 ## **Infrastructure**
 
 ### **Server**: 
-- **AWS EC2**: This is your virtual server where your applications are running.
+- **AWS EC2**: This is the virtual server where your applications are running.
 
 ### **Load Balancer**: 
 - **AWS ALB (Application Load Balancer)**: Sits in front of your EC2 instance. It distributes incoming application traffic across multiple targets, such as EC2 instances. 
 
 ### **Certificate Management**: 
-- **ACM (AWS Certificate Manager)**: You're using ACM to handle SSL certificates. This will allow your websites to be accessed over HTTPS.
+- **ACM (AWS Certificate Manager)**: We're using ACM to handle SSL certificates. This will allow our websites to be accessed over HTTPS.
 
 ### **Domain**: 
 - **power365logistics.com**: This is your primary domain.
-- **dev.power365logistics.com**: This is your subdomain for the development environment.
+- **dev.power365logistics.com**: This is our subdomain for the development environment.
 
 ---
 
@@ -19,12 +19,12 @@
 
 ### **nginx-main**:
 - **Purpose**: Serves the main website.
-- **Ports**: Listens on port 80 inside the container, which is mapped to port 80 of your host.
+- **Ports**: Listens on port 80 inside the container, which is mapped to port 80 of our host.
 - **Volume**: Data from `/deploy/main-website` on your server is mounted to `/usr/share/nginx/html` in the container, making your website's files available to the nginx server.
   
 ### **nginx-dev**:
 - **Purpose**: Serves the development version of the website.
-- **Ports**: Listens on port 80 inside the container, mapped to port 8080 of your host.
+- **Ports**: Listens on port 80 inside the container, mapped to port 8080 of our host.
 - **Volume**: Data from `/deploy/dev-website` is mounted to `/usr/share/nginx/html` in the container.
 
 ---
@@ -63,4 +63,4 @@ Whenever you make changes to your application and push to either the `dev` or `m
 
 For security, any HTTP request is automatically redirected to HTTPS, ensuring encrypted and secure communication.
 
-This setup provides a clear separation between your production (`main`) and development (`dev`) environments while leveraging Docker for consistency and scalability. AWS services like ALB and ACM further enhance the setup by providing efficient load balancing and secure SSL certificate management, respectively.
+This setup provides a clear separation between our production (`main`) and development (`dev`) environments while leveraging Docker for consistency and scalability. AWS services like ALB and ACM further enhance the setup by providing efficient load balancing and secure SSL certificate management, respectively.
